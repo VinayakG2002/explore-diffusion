@@ -4,7 +4,6 @@ import torch
 import numpy as np
 from model import LitDiffusionModel
 from eval_utils import *
-from chamferdist import ChamferDistance
 
 parser = argparse.ArgumentParser()
 
@@ -82,6 +81,7 @@ for i_run in range(args.n_runs):
 
     # Chamfer
     if args.eval_chamfer:
+        from chamferdist import ChamferDistance
         cd = ChamferDistance()
         test_chamfer = cd(
             testdata.unsqueeze(0).float(), 
